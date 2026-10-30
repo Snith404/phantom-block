@@ -13,6 +13,7 @@ public class PhantomBlock implements ModInitializer {
 	public void onInitialize() {
 		LOGGER.info("Hello Fabric world!");
 		ModBlocks.initialize();
+		ModBlockEntities.initialize();
 	}
 
 	public static Identifier id(String path) {
