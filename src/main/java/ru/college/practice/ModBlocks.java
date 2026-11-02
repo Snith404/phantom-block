@@ -14,7 +14,8 @@ public class ModBlocks {
 
     public static final Block PHANTOM_BLOCK = registerBlock("phantom_block",
             new PhantomBlockLogic(AbstractBlock.Settings.create()
-                    .strength(0.5f) // Ломается быстро
+                    .strength(0.5f)
+                    .requiresTool()
             ));
 
     private static Block registerBlock(String name, Block block) {
