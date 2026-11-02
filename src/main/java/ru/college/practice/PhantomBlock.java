@@ -14,6 +14,17 @@ public class PhantomBlock implements ModInitializer {
 		LOGGER.info("Hello Fabric world!");
 		ModBlocks.initialize();
 		ModBlockEntities.initialize();
+
+		net.fabricmc.fabric.api.event.player.UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
+			if (!world.isClient) {
+				net.minecraft.block.BlockState state = world.getBlockState(hitResult.getBlockPos());
+				if (state.isOf(ModBlocks.PHANTOM_BLOCK)) {
+					player.sendMessage(net.minecraft.text.Text.literal("Блок-призрак активирован!"), false);
+					return net.minecraft.util.ActionResult.SUCCESS;
+				}
+			}
+			return net.minecraft.util.ActionResult.PASS;
+		});
 	}
 
 	public static Identifier id(String path) {
